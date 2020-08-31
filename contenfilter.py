@@ -169,7 +169,7 @@ for f in os.listdir('textresume'):
     y=cv.transform(file)
     x=y.toarray().sum(axis=0)
     df.loc[len(df)]=x
-print df
+print(df)
 
 
 # In[97]:
@@ -182,7 +182,7 @@ tfv.fit(skill)
 
 # In[98]:
 
-print tfv.get_feature_names()
+print(tfv.get_feature_names())
 
 
 # In[99]:
@@ -205,7 +205,7 @@ for f in os.listdir('textresume'):
     y=tfv.transform(file)
     x=y.toarray().sum(axis=0)
     df2.loc[len(df2)]=x
-print df2
+print(df2)
 
 
 # In[141]:
@@ -220,7 +220,7 @@ for i in range(0,len(df2)):
 rating=dict(zip(os.listdir('mlresume'),li))
 rating=sorted(rating.items(), key=lambda x:x[1])
 rating=rating[::-1]
-print rating
+print(rating)
 
 
 # In[144]:
