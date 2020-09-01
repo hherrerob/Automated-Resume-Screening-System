@@ -58,8 +58,8 @@ def res(offer_description, candidates):
     }
 
     for item in z:
-        results["scores"].append(item[0])
-        results["candidates"].append(item[1])
+        results["scores"] = [item[0]] + results["scores"]
+        results["candidates"] = [item[1]] + results["candidates"]
 
     return results
 

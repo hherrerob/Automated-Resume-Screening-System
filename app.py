@@ -47,8 +47,6 @@ def candidate_search():
     search_text = request.json['search']
     candidates = request.json['candidates']
 
-    print(candidates)
-
     code, msg = validators.run_param_validators(search_text, candidates)
 
     if code == 400:
