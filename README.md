@@ -1,6 +1,6 @@
 # PeopleAnalytics Candidates Compare and Filter
 
-This project is an API based off [Automated Resume Screening System](https://www.google.com/search?client=firefox-b-e&q=utomated+Resume+Screening+System), to better filter out candidates and provide the better candidate for an specific offer description.
+This project is an API based off [Automated Resume Screening System](https://github.com/JAIJANYANI/Automated-Resume-Screening-System), to better filter out candidates and provide the better candidate for an specific offer description.
 
 
 # Installation
