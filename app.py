@@ -17,21 +17,25 @@ app.config.from_object(__name__)
 
 @app.route('/candidate/compare', methods=['POST'])
 def candidate_compare():
-    code, msg = validators.has_params(request.json, ['offer', 'candidates'])
+    code, msg = validators.has_params(request.json, [['offer', 'candidates'], ['candidate', 'offers']])
 
     if code == 400:
         return utils.make_response(code, msg)
 
-    offer = request.json['offer']
-    candidates = request.json['candidates']
+    if 'offer' and 'candidates' in request.json:
+        item = request.json['offer']
+        compare_with = request.json['candidates']
+    else:
+        item = request.json['candidate']
+        compare_with = request.json['offers']
 
-    code, msg = validators.run_param_validators(offer, candidates)
+    code, msg = validators.run_param_validators(item, compare_with)
 
     if code == 400:
         return utils.make_response(code, msg)
 
     try:
-        results = screen.res(offer, candidates)
+        results = screen.res(item, compare_with)
         return utils.make_response(200, results)
     except Exception as e:
         return utils.make_response(500, str(e))
@@ -39,7 +43,7 @@ def candidate_compare():
 
 @app.route('/candidate/search', methods=['POST'])
 def candidate_search():
-    code, msg = validators.has_params(request.json, ['search', 'candidates'])
+    code, msg = validators.has_params(request.json, [['search', 'candidates']])
 
     if code == 400:
         return utils.make_response(code, msg)

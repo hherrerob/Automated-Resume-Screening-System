@@ -2,9 +2,20 @@ def has_params(request, required_params):
     if not request:
         return 400, "Request is empty"
 
-    for param in required_params:
-        if param not in request:
-            return 400, "Parameter missing"
+    valid = False
+
+    for param_pair in required_params:
+        has_all_req_params = True
+        for param in param_pair:
+            if param not in request:
+                has_all_req_params = False
+
+        if has_all_req_params:
+            valid = True
+            break
+
+    if not valid:
+        return 400, "Parameter missing"
 
     return 200, "Success"
 
